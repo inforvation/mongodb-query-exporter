@@ -29,8 +29,9 @@ const query = async () => {
   const dbClient = await mongodb.MongoClient.connect(process.env.MONGODB_URL, options)
   const db = dbClient.db(process.env.MONGODB_DB)
   const collection = await db.collection(process.env.MONGODB_COLLECTION)
-  const result = await collection.countDocuments(process.env.QUERY)
+  const result = await collection.countDocuments(require('./config'))
   counter.set(result)
+  console.log(result)
   dbClient.close()
 }
 
@@ -44,6 +45,11 @@ server.get('/metrics',async (req,res) => {
 	}
 })
 
+
+query()
+
+/*
 const port = process.env.PORT || 3000
 console.log(`Server listening to ${port}, metrics exposed on /metrics endpoint`);
 server.listen(port)
+*/
