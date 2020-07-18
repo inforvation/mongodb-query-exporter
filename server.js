@@ -46,10 +46,8 @@ server.get('/metrics',async (req,res) => {
 })
 
 
-query()
+//query()
 
-/*
 const port = process.env.PORT || 3000
 console.log(`Server listening to ${port}, metrics exposed on /metrics endpoint`);
 server.listen(port)
-*/
