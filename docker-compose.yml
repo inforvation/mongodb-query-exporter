@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  exporter:
+    image: docker.pkg.github.com/inforvation/mongodb-query-exporter/master:latest
+    ports:
+      - 3030:3000
+    secrets:
+      - db_key
+      - cert
+      - ca
+    env_file:
+      - ./.env
+
+secrets:
+   db_key:
+     file: ./secrets/mongodb.pem
+   cert:
+     file: ./secrets/cert.pem
+   ca:
+     file: ./secrets/ca.pem
